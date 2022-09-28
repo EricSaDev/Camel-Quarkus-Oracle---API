@@ -6,8 +6,6 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
 ## Deploy on localhost and Podman
 
-
-
 * Create a Oracle Container
   
   ```shell script
@@ -23,12 +21,11 @@ If you want to learn more about Quarkus, please visit its website: https://quark
 
   podman exec -it oracle /bin/bash
 
-  /# sqlplus system/oracle@localhost:1521/orcl
+  sqlplus system/oracle@localhost:1521/orcl
 
   SQL*Plus: Release 12.1.0.2.0 Production on Tue Sep 27 19:27:57 2022
 
   Copyright (c) 1982, 2014, Oracle.  All rights reserved.
-
 
   Connected to:
   Oracle Database 12c Enterprise Edition Release 12.1.0.2.0 - 64bit Production
