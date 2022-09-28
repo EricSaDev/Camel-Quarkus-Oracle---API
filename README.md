@@ -12,17 +12,18 @@ If you want to learn more about Quarkus, please visit its website: https://quark
   
   ```shell script
 podman pull absolutapps/oracle-12c-ee
-----
+
 podman images 
-----
+
 mkdir /home/eric/dbdata/oracle12c/oradata
-----
+
 podman run -d --name oracle --privileged -v /home/eric/dbdata/oracle12c/oradata:/u01/app/oracle -p 8080:8080 -p 1521:1521 oracle-12c-ee
-----
+
 podman logs oracle
-----
+
 podman exec -it oracle /bin/bash
-[root@4430f0ffb498 /]# sqlplus system/oracle@localhost:1521/orcl
+
+/# sqlplus system/oracle@localhost:1521/orcl
 
 SQL*Plus: Release 12.1.0.2.0 Production on Tue Sep 27 19:27:57 2022
 
@@ -54,10 +55,6 @@ SQL> set wrap off;
 SQL> SET LINESIZE 200;
 
 SQL> select * from people;
-
- PEOPLE_ID FIRSTNAME	   LASTNAME	   	   EMAIL		     		 START_DAT END_DATE
----------- --------------- --------------- ------------------------- --------- ---------
-	     1 Osvaldo	       Melo 	       omelo@redhat.com	         14-NOV-17 16-NOV-17
   ```
 
 * Deploy Camel Quarkus APP
