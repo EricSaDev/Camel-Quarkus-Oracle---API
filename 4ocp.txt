@@ -1,0 +1,23 @@
+oc new-project camel-quarkus-oc-api
+
+oc adm policy add-scc-to-user anyuid -z builder
+oc adm policy add-scc-to-user anyuid -z default
+oc adm policy add-scc-to-user anyuid -z deployer
+
+FAIL - oc new-app --name oc-api openshift/java:openjdk-11-el7~https://github.com/EricSaDev/camel-quarkus-oracle-api.git#4openshift
+
+eric@esa-redhat:~/Documents/Red Hat/PoC/Camel Quarkus Oracle - API$ ./mvnw clean package -Dquarkus.kubernetes.deploy=true
+
+eric@esa-redhat:~/Documents/Red Hat/PoC/Camel Quarkus Oracle - API$ oc get svc
+NAME                       TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)   AGE
+camel-quarkus-oracle-api   ClusterIP   172.30.140.98   <none>        80/TCP    3m21s
+
+eric@esa-redhat:~/Documents/Red Hat/PoC/Camel Quarkus Oracle - API$ oc expose svc camel-quarkus-oracle-api
+Error from server (AlreadyExists): routes.route.openshift.io "camel-quarkus-oracle-api" already exists
+
+eric@esa-redhat:~/Documents/Red Hat/PoC/Camel Quarkus Oracle - API$ oc get route
+NAME                       HOST/PORT                                                                                      PATH      SERVICES                   PORT      TERMINATION   WILDCARD
+camel-quarkus-oracle-api   camel-quarkus-oracle-api-camel-quarkus-oc-api.apps.cluster-lb04ff.lb04ff.example.opentlc.com             camel-quarkus-oracle-api   9000                    None
+
+
+http://camel-quarkus-oracle-api-camel-quarkus-oc-api.apps.cluster-lb04ff.lb04ff.example.opentlc.com/api/
